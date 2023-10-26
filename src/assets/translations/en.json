@@ -5,8 +5,8 @@
     "instructions": "Setup your added channels by adding baseline budgets out of your total budget. See the forecast impact with the help of tips and insights.",
     "button": "Add Channel",
     "navigation": {
-      "allocator_tab": "Allocate Budget",
-      "summary_tab": "Summary"
+      "allocator": "Allocate Budget",
+      "summary": "Summary"
     }
   },
   "allocator": {

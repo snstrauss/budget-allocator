@@ -1,0 +1,18 @@
+@import '../../styles/mixins.scss';
+
+.tabsNavigation {
+  margin-top: 50px;
+
+  .tabs {
+    @include flex($direction: row, $justify: flex-start, $gap: 26px);
+    margin-bottom: 30px;
+
+    .tab {
+      text-decoration: none;
+      
+      &.currentTab {
+        box-shadow: 0px 3px black;
+      }
+    }
+  }
+}

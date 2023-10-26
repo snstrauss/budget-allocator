@@ -26,10 +26,7 @@ export function Typography({
 }
 
 export function useTextFromPath(path, replace = {}) {
-  console.log(enLangTranslations);
-
   const textTemplate = get(enLangTranslations, path);
-
   const interpolatedText = replaceTemplatePlaceholders(textTemplate, replace);
 
   return interpolatedText;
