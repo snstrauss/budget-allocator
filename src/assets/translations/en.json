@@ -1,0 +1,51 @@
+{
+  "app_header": {
+    "app_title": "Build your budget plan",
+    "instructions_title": "Setup channels",
+    "instructions": "Setup your added channels by adding baseline budgets out of your total budget. See the forecast impact with the help of tips and insights.",
+    "button": "Add Channel",
+    "navigation": {
+      "allocator_tab": "Allocate Budget",
+      "summary_tab": "Summary"
+    }
+  },
+  "allocator": {
+    "menu": {
+      "actions": {
+        "edit": "Edit",
+        "remove": "Remove"
+      }
+    },
+    "config": {
+      "frequency": {
+        "label": "Budget Frequency",
+        "tooltip": "Something about budgeting",
+        "options": {
+          "annually": "Annually",
+          "monthly": "Monthly",
+          "Quarterly": "Quarterly"
+        }
+      },
+      "baseline": {
+        "label": "Baseline {{frequency}} Budget",
+        "tooltip": "something about baselines?",
+        "placeholder": "Add baseline budget"
+      },
+      "allocation": {
+        "label": "Budget Allocation",
+        "tooltip": "Equal vs. Manual",
+        "options": {
+          "equal": "Equal",
+          "manual": "Manual"
+        }
+      }
+    },
+    "breakdown": {
+      "title": "Budget Breakdown",
+      "instructions": "By default, your budget will be equally divided throughout the year. You can manually change the budget allocation, either now or later."
+    }
+  },
+  "summary": {
+    "channels_label": "Channel"
+  }
+}
