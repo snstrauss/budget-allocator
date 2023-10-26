@@ -1,3 +1,20 @@
+@import "../../styles/mixins.scss";
+
 .header {
-  border: 3px solid deeppink;
+  @include flex($direction: row, $justify: space-between, $align: flex-end);
+
+  .instructions {
+    @include flex($align: flex-start, $gap: var(--gap));
+
+    max-width: 678px;
+    --gap: 8px;
+
+    *:first-child {
+      margin-bottom: var(--gap);
+    }
+
+    .info {
+      color: #99a4c2;
+    }
+  }
 }

@@ -6,3 +6,6 @@
   src: url('../assets/fonts/AvenirNextLTPro-Regular.otf') format('otf');
 }
 
+body {
+  padding: 50px;
+}
