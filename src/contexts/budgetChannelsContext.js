@@ -15,6 +15,7 @@ const initialChannels = [];
 
 function createNewChannel() {
   return {
+    id: crypto.randomUUID(),
     name: "New Channel",
     allocation: BUDGET_ALLOCATION.EQUAL,
     frequency: BUDGET_FREQUANCY.ANNUALLY,
@@ -26,6 +27,14 @@ const campaignActions = {
   addChannel: (state) => {
     return [...state, createNewChannel()];
   },
+  renameChannel: (state, { id, name }) => {
+    const relevantChannel = state.find((channel) => channel.id === id);
+    relevantChannel.name = name;
+
+    return [...state];
+  },
+  removeChannel: (state, { id }) =>
+    state.filter((channel) => channel.id !== id),
 };
 
 const { Provider, Context } = createActionsContext(

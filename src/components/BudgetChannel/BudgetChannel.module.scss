@@ -11,7 +11,6 @@
 
   border-radius: 4px;
   border: var(--border);
-  overflow: hidden;
 
   header,
   main {
@@ -27,6 +26,22 @@
       $justify: flex-start,
       $gap: 12px
     );
+
+    .name {
+      background-color: transparent;
+      border: none;
+      outline: none;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      &.edit {
+        background-color: white;
+        border: 1px solid #313131;
+        border-radius: 4px;
+        padding: 5px;
+      }
+    }
   }
 
   main {

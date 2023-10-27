@@ -3,13 +3,13 @@ import enLangTranslations from "../../assets/translations/en.json";
 import { get } from "radash";
 import clsx from "clsx";
 
-
 export function Typography({
   textPath = "",
   replace = {},
   size = 14,
   weight = 400,
-  className
+  className,
+  onClick,
 }) {
   const text = useTextFromPath(textPath, replace);
 
@@ -19,7 +19,11 @@ export function Typography({
   };
 
   return (
-    <span className={clsx(S.typography, className)} style={textStyleParameters}>
+    <span
+      className={clsx(S.typography, className)}
+      style={textStyleParameters}
+      onClick={onClick}
+    >
       {text}
     </span>
   );

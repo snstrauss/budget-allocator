@@ -5,3 +5,11 @@
   justify-content: $justify;
   gap: $gap;
 }
+
+@mixin absolute-position($top: unset, $left: unset, $bottom: unset, $right: unset) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  bottom: $bottom;
+  right: $right;
+}
