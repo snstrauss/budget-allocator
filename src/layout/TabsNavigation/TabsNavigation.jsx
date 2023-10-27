@@ -1,14 +1,22 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import { tabsConfig } from "../RoutesProvider/RoutesProvider";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { TABS, tabsConfig } from "../RoutesProvider/RoutesProvider";
 import S from "./TabsNavigation.module.scss";
 import { Typography } from "../../components/Typography/Typography";
 import clsx from "clsx";
 import { AppHeader } from "../AppHeader/AppHeader";
+import { useEffect } from "react";
 
 const tabsTextBase = "app_header.navigation";
 
 export function TabsNavigation() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (pathname === TABS.ROOT) {
+      navigate(TABS.ALLOCATOR);
+    }
+  }, [pathname]);
 
   return (
     <>
