@@ -2,10 +2,15 @@ import S from "./AppHeader.module.scss";
 import { Typography } from "../../components/Typography/Typography";
 import { Button } from "../../components/Button/Button";
 import PlusSignSvg from "../../assets/img/plus-sign.svg?react";
+import { useContext } from "react";
+import { BudgetChannelsContext } from "../../contexts/budgetChannelsContext";
 
 const appHeaderTextBase = "app_header";
 
 export function AppHeader() {
+
+  const { actions: { addChannel } } = useContext(BudgetChannelsContext);
+
   return (
     <div className={S.header}>
       <div className={S.instructions}>
@@ -24,7 +29,7 @@ export function AppHeader() {
           className={S.info}
         />
       </div>
-      <Button>
+      <Button onClick={addChannel}>
         <PlusSignSvg />
         <Typography
           textPath={`${appHeaderTextBase}.button`}
