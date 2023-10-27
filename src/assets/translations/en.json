@@ -47,5 +47,8 @@
   },
   "summary": {
     "channels_label": "Channel"
+  },
+  "error_screen": {
+    "button": "Try again"
   }
 }

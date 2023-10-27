@@ -1,0 +1,12 @@
+.errorScreen {
+  display: grid;
+  place-items: center;
+  font-size: 10rem;
+  margin-block: 14rem;
+
+  .reloadButton {
+    border: 3px solid #313131;
+    border-radius: 10rem;
+    padding-inline: 4rem;
+  }
+}
