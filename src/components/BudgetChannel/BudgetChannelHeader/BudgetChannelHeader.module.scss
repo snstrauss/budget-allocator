@@ -1,0 +1,45 @@
+@import "../../../styles/mixins.scss";
+
+.budgetChannelHeader {
+  --indicator-rotation: -90deg;
+
+  background-color: #f6f7fb;
+
+  @include flex(
+    $direction: row,
+    $align: center,
+    $justify: flex-start,
+    $gap: 12px
+  );
+
+  .indicator {
+    margin-inline-end: 15px;
+    transform: rotate(var(--indicator-rotation));
+    transition: transform var(--open-close-duration) ease-in;
+  }
+
+  .name {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    &.edit {
+      background-color: white;
+      border: 1px solid #313131;
+      border-radius: 4px;
+      padding: 5px;
+    }
+  }
+
+  .menu {
+    margin-inline-start: auto;
+  }
+
+  &.open {
+    border-bottom: var(--border);
+    --indicator-rotation: 0;
+  }
+}

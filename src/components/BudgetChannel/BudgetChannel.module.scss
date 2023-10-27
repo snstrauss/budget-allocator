@@ -5,8 +5,6 @@
   --border: 1px solid rgba(178, 187, 213, 0.5);
   --inline-pad: 16px;
   --block-pad: calc(var(--inline-pad) / 2);
-
-  --indicator-rotation: -90deg;
   --main-height: 0;
 
   border-radius: 4px;
@@ -15,33 +13,6 @@
   header,
   main {
     padding: var(--block-pad) var(--inline-pad);
-  }
-
-  header {
-    background-color: #f6f7fb;
-
-    @include flex(
-      $direction: row,
-      $align: center,
-      $justify: flex-start,
-      $gap: 12px
-    );
-
-    .name {
-      background-color: transparent;
-      border: none;
-      outline: none;
-
-      font-size: 14px;
-      font-weight: 500;
-
-      &.edit {
-        background-color: white;
-        border: 1px solid #313131;
-        border-radius: 4px;
-        padding: 5px;
-      }
-    }
   }
 
   main {
@@ -54,23 +25,7 @@
     transition-property: max-height, padding;
   }
 
-  .indicator {
-    margin-inline-end: 15px;
-    transform: rotate(var(--indicator-rotation));
-
-    transition: transform var(--open-close-duration) ease-in;
-  }
-
-  .menu {
-    margin-inline-start: auto;
-  }
-
   &.open {
-    header {
-      border-bottom: var(--border);
-      --indicator-rotation: 0;
-    }
-
     main {
       padding-block: var(--block-pad);
       --main-height: 10vh;
