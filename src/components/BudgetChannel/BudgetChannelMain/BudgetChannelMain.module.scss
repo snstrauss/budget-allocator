@@ -14,10 +14,11 @@
   transition: var(--open-close-duration) ease-in;
   transition-property: max-height, padding;
 
-  @include flex($align: flex-start, $gap: 48px);
+  @include flex($align: flex-start, $justify: flex-start, $gap: 48px);
 
   &.open {
-    --main-height: 50vh;
+    --main-height: 55vh;
     --block-pad: var(--pad);
+    overflow: scroll;
   }
 }

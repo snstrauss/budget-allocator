@@ -1,11 +1,25 @@
-@import '../../../../styles/mixins.scss';
+@import "../../../../styles/mixins.scss";
 
 .budgetChannelBreakdown {
-  border: 5px solid seagreen;
+  @include flex($align: flex-start, $gap: 24px);
+  width: 80%;
+  background-color: rgb(198 204 220 / 50%);
+  border: 1px solid #B2BBD580;
+  padding: 24px;
 
-  @include flex($align: flex-start);
+  .text {
+    @include flex($align: flex-start, $gap: 8px);
 
-  .instructions {
-    color: #99A4C2;
+    .instructions {
+      color: #99a4c2;
+    }
+  }
+
+
+  .breakdown {
+    display: grid;
+    gap: 55px;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 }

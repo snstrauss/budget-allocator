@@ -4,12 +4,10 @@ import { BudgetChannelConfig } from "./BudgetChannelConfig/BudgetChannelConfig";
 import { BudgetChannelBreakdown } from "./BudgetChannelBreakdown/BudgetChannelBreakdown";
 
 export function BudgetChannelMain({ channelId, isOpen }) {
-
-
   return (
     <main className={clsx(S.budgetChannelMain, isOpen && S.open)}>
       <BudgetChannelConfig channelId={channelId} />
-      <BudgetChannelBreakdown />
+      <BudgetChannelBreakdown channelId={channelId} />
     </main>
   );
 }
