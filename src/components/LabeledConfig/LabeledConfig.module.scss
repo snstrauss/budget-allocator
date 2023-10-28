@@ -1,0 +1,23 @@
+@import '../../styles/mixins.scss';
+
+.labeledConfig {
+  position: relative;
+  @include flex($direction: column, $align: flex-start, $gap: 8px);
+
+  .label {
+    @include flex($direction: row, $justify: flex-start, $gap: 8px);
+  }
+
+  .iconWrapper {
+    padding: 2px;
+    position: relative;
+  }
+
+  .config {
+    width: 226px;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}

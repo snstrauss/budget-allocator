@@ -1,0 +1,7 @@
+@import '../../../../styles/mixins.scss';
+
+.budgetChannelConfig {
+  border: 4px solid teal;
+
+  @include flex($direction: row, $justify: flex-start, $gap: 56px);
+}
