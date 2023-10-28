@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import S from "./BudgetChannel.module.scss";
 import { BudgetChannelHeader } from "./BudgetChannelHeader/BudgetChannelHeader";
+import { BudgetChannelMain } from "./BudgetChannelMain/BudgetChannelMain";
 
 export function BudgetChannel({ channelData, isOpen, onSelectChannel }) {
   return (
@@ -10,7 +11,7 @@ export function BudgetChannel({ channelData, isOpen, onSelectChannel }) {
         onSelectChannel={onSelectChannel}
         isOpen={isOpen}
       />
-      <main>main content</main>
+      <BudgetChannelMain channelData={channelData} isOpen={isOpen} />
     </div>
   );
 }

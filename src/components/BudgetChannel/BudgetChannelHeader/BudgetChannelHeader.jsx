@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 import S from "./BudgetChannelHeader.module.scss";
 import OpenIndicatorSvg from "../../../assets/img/open-close-indicator.svg?react";
 import ChannelIconSvg from "../../../assets/img/channel-icon.svg?react";
-import { BudgetChannelMenu } from "../../BudgetChannelMenu/BudgetChannelMenu";
+import { BudgetChannelMenu } from "../BudgetChannelMenu/BudgetChannelMenu";
 import clsx from "clsx";
 import { BudgetChannelsContext } from "../../../contexts/budgetChannelsContext";
 import { useClickAway, useKey, useToggle } from "react-use";
@@ -14,7 +14,10 @@ export function BudgetChannelHeader({ channelData, onSelectChannel, isOpen }) {
   const { name } = channelData;
 
   return (
-    <header className={clsx(S.budgetChannelHeader, isOpen && S.open)} onClick={onSelectChannel}>
+    <header
+      className={clsx(S.budgetChannelHeader, isOpen && S.open)}
+      onClick={onSelectChannel}
+    >
       <OpenIndicatorSvg className={S.indicator} />
       <ChannelIconSvg />
       <input

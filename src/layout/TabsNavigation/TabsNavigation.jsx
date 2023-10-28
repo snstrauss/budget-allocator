@@ -16,7 +16,7 @@ export function TabsNavigation() {
     if (pathname === TABS.ROOT) {
       navigate(TABS.ALLOCATOR);
     }
-  }, [pathname]);
+  }, [pathname, navigate]);
 
   return (
     <>
