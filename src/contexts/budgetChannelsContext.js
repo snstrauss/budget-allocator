@@ -28,15 +28,24 @@ const campaignActions = {
   addChannel: (state) => {
     return [...state, createNewChannel()];
   },
-  renameChannel: (state, { id, name }) => {
-    const relevantChannel = state.find((channel) => channel.id === id);
-    relevantChannel.name = name;
-
-    return [...state];
-  },
+  renameChannel: (allChannels, { id, name }) =>
+    changeSingleChannel(allChannels, id, {
+      name,
+    }),
+  setChannelAllocation: (allChannels, { id, allocation }) =>
+    changeSingleChannel(allChannels, id, {
+      allocation,
+    }),
   removeChannel: (state, { id }) =>
     state.filter((channel) => channel.id !== id),
 };
+
+function changeSingleChannel(allChannels, channelId, newValue = {}) {
+  const relevantChannel = getSingleChannel(allChannels, channelId);
+  Object.assign(relevantChannel, newValue);
+
+  return [...allChannels];
+}
 
 const { Provider, Context } = createActionsContext(
   campaignActions,
@@ -49,8 +58,9 @@ export const BudgetChannelsProvider = Provider;
 export function useBudgetChannel(id) {
   const { state: allChannels } = useContext(BudgetChannelsContext);
 
-  return useMemo(
-    () => allChannels.find((channel) => channel.id === id),
-    [allChannels, id]
-  );
+  return useMemo(() => getSingleChannel(allChannels, id), [allChannels, id]);
+}
+
+function getSingleChannel(allChannels, channelId) {
+  return allChannels.find((channel) => channel.id === channelId);
 }
