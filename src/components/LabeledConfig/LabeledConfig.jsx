@@ -4,10 +4,11 @@ import InfoIconSvg from "../../assets/img/info-icon.svg?react";
 import { useHoverDirty } from "react-use";
 import { useRef } from "react";
 import { AppearingCard } from "../AppearingCard/AppearingCard";
+import clsx from "clsx";
 
 const tooltipPosition = "calc(100% + 5px)";
 
-export function LabeledConfig({ children, textBase, labelReplace }) {
+export function LabeledConfig({ children, textBase, labelReplace, className }) {
   const labelTextPath = `${textBase}.label`;
   const tooltipTextPath = `${textBase}.tooltip`;
 
@@ -15,7 +16,7 @@ export function LabeledConfig({ children, textBase, labelReplace }) {
   const isHoveringOnIcon = useHoverDirty(infoRef);
 
   return (
-    <div className={S.labeledConfig}>
+    <div className={clsx(S.labeledConfig, className)}>
       <div className={S.label}>
         <Typography textPath={labelTextPath} replace={labelReplace} />
         <span ref={infoRef} className={S.iconWrapper}>
