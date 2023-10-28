@@ -2,7 +2,7 @@
 
 .budgetChannelBreakdown {
   @include flex($align: flex-start, $gap: 24px);
-  width: 80%;
+  width: 75%;
   background-color: rgb(198 204 220 / 50%);
   border: 1px solid #B2BBD580;
   padding: 24px;
@@ -18,7 +18,7 @@
 
   .breakdown {
     display: grid;
-    gap: 55px;
+    gap: 24px;
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
