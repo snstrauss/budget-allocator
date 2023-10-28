@@ -19,6 +19,8 @@
       padding-block: 11px;
       border: none;
 
+      transition: background 0.3s ease-in-out;
+
       &.selected {
         background: white;
 

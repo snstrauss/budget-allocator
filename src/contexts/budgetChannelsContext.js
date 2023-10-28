@@ -40,6 +40,12 @@ const campaignActions = {
     changeSingleChannel(allChannels, id, {
       allocation,
     }),
+  setMonthValue: (allChannels, { channelId, monthIndex, newValue }) => {
+    const relevantChannel = getSingleChannel(allChannels, channelId);
+    relevantChannel.months[monthIndex] = newValue;
+
+    return [...allChannels];
+  },
   removeChannel: (state, { id }) =>
     state.filter((channel) => channel.id !== id),
 };

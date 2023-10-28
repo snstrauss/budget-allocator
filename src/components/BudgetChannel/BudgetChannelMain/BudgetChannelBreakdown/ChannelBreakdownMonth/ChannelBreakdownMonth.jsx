@@ -5,15 +5,15 @@ import { NumberFieldConfig } from "../../../../LabeledConfigurations/NumberField
 export function ChannelBreakdownMonth({ value, idx, onChange }) {
   const monthName = useMonthName(idx);
 
-  function valueChanged(ds) {
-    // debugger;
+  function changeMonthValue(newValue) {
+    onChange(newValue, idx);
   }
 
   return (
     <NumberFieldConfig
-      onChange={valueChanged}
+      onChange={changeMonthValue}
       textOverride={monthName}
-      initialValue={"34"}
+      initialValue={value}
       withInfo={false}
       icon={<DollarSignSvg />}
     />

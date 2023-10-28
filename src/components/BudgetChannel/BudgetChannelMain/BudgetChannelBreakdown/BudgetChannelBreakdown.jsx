@@ -1,4 +1,8 @@
-import { useBudgetChannel } from "../../../../contexts/budgetChannelsContext";
+import { useContext } from "react";
+import {
+  BudgetChannelsContext,
+  useBudgetChannel,
+} from "../../../../contexts/budgetChannelsContext";
 import { Typography } from "../../../Typography/Typography";
 import S from "./BudgetChannelBreakdown.module.scss";
 import { ChannelBreakdownMonth } from "./ChannelBreakdownMonth/ChannelBreakdownMonth";
@@ -6,10 +10,17 @@ import { ChannelBreakdownMonth } from "./ChannelBreakdownMonth/ChannelBreakdownM
 const breakdownTextBase = `allocator.breakdown`;
 
 export function BudgetChannelBreakdown({ channelId }) {
+  const {
+    actions: { setMonthValue },
+  } = useContext(BudgetChannelsContext);
   const { months } = useBudgetChannel(channelId);
 
-  function updateMonthValue(re) {
-    debugger;
+  function updateMonthValue(newValue, monthIndex) {
+    setMonthValue({
+      channelId,
+      monthIndex,
+      newValue,
+    });
   }
 
   return (
