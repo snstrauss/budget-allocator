@@ -5,37 +5,53 @@ import {
   BudgetChannelsContext,
   useBudgetChannel,
 } from "../../../../contexts/budgetChannelsContext";
-import { Button } from "../../../Button/Button";
-import { LabeledConfig } from "../../../LabeledConfig/LabeledConfig";
 import { NumberFieldConfig } from "../../../LabeledConfigurations/NumberFieldConfig/NumberFieldConfig";
 import S from "./BudgetChannelConfig.module.scss";
 import { ToggleConfig } from "../../../LabeledConfigurations/ToggleConfig/ToggleConfig";
 import { useContext } from "react";
+import { DropDownConfig } from "../../../LabeledConfigurations/DropDownConfig/DropDownConfig";
 
 const configTextBase = `allocator.config`;
 
 export function BudgetChannelConfig({ channelId }) {
-  // const channel = useBudgetChannel(channelId);
-  const { actions: { setChannelAllocation } } = useContext(BudgetChannelsContext);
+  const {
+    actions: { setChannelAllocation, setChannelFrequency },
+  } = useContext(BudgetChannelsContext);
 
   const { frequency, allocation } = useBudgetChannel(channelId);
+  
+  function updateFrequency(frequency) {
+    setChannelFrequency({
+      id: channelId,
+      frequency,
+    });
+  }
 
   function updateBaseline(baseline) {
-    console.log(`%cbaseline - ${baseline}`, "font-size: 35px; color: dodgerblue;");
+    console.log(
+      `%cbaseline - ${baseline}`,
+      "font-size: 35px; color: dodgerblue;"
+    );
   }
 
   function updateAllocationStrategy(allocation) {
     setChannelAllocation({
       id: channelId,
-      allocation
+      allocation,
     });
   }
 
   return (
     <div className={S.budgetChannelConfig}>
-      <LabeledConfig textBase={`${configTextBase}.frequency`}>
-        <Button>df</Button>
-      </LabeledConfig>
+      <DropDownConfig
+        textBase={`${configTextBase}.frequency`}
+        onChange={updateFrequency}
+        options={[
+          BUDGET_FREQUANCY.ANNUALLY,
+          BUDGET_FREQUANCY.MONTHLY,
+          BUDGET_FREQUANCY.QUARTERLY,
+        ]}
+      />
 
       <NumberFieldConfig
         onChange={updateBaseline}

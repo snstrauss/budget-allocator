@@ -23,7 +23,7 @@
         "options": {
           "annually": "Annually",
           "monthly": "Monthly",
-          "Quarterly": "Quarterly"
+          "quarterly": "Quarterly"
         }
       },
       "baseline": {

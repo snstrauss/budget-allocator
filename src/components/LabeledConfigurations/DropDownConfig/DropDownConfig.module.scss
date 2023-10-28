@@ -1,0 +1,23 @@
+@import "../../../styles/mixins.scss";
+
+.dropDownConfig {
+  .arrow {
+    @include absolute-position($top: 50%, $right: 10px);
+    transform: translateY(-50%);
+  }
+
+  .selectWrapper {
+    position: relative;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px 16px;
+
+    border: 1px solid #b2bbd580;
+    border-radius: 4px;
+
+    outline: none;
+    appearance: none;
+  }
+}

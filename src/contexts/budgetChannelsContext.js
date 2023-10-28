@@ -32,6 +32,10 @@ const campaignActions = {
     changeSingleChannel(allChannels, id, {
       name,
     }),
+  setChannelFrequency: (allChannels, { id, frequency }) =>
+    changeSingleChannel(allChannels, id, {
+      frequency,
+    }),
   setChannelAllocation: (allChannels, { id, allocation }) =>
     changeSingleChannel(allChannels, id, {
       allocation,

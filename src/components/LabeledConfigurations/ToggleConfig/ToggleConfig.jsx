@@ -12,9 +12,6 @@ export function ToggleConfig({
   onChange,
   options = [],
 }) {
-  
-  debugger;
-  
   const [selectedIdx, setSelectedIdx] = useState(options.indexOf(initialValue));
 
   function setSelectedItem(idx) {
