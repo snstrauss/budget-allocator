@@ -32,9 +32,9 @@ function useBudgetChannelsAccordion() {
 
   useEffect(() => {
     if (budgetChannels.length > 0) {
-      setOpenChannelId(budgetChannels[0].id);
+      setOpenChannelId(openChannelId || budgetChannels[0].id);
     }
-  }, [budgetChannels]);
+  }, [budgetChannels, openChannelId]);
 
   return {
     budgetChannels,
