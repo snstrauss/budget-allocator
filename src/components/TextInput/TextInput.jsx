@@ -1,24 +1,24 @@
 import { forwardRef, useState } from "react";
 
 export const TextInput = forwardRef(function TextInput(
-  { initialValue, onDone, preventClicks, className },
+  { initialValue, onDone, preventClicks, className, formatter },
   ref
 ) {
   const [textValue, setTextValue] = useState(initialValue);
 
   function doneEditing() {
-    console.log(`%cdone editing`, 'font-size: 35px; color: dodgerblue;');
     onDone();
     ref.current.blur();
   }
 
   function changeValue(ev) {
-    setTextValue(ev.target.value);
+    const nextValue = ev.target.value;
+    const nextFormattedValue = formatter ? formatter(nextValue) : nextValue;
+    setTextValue(nextFormattedValue);
   }
 
   function checkForEnter(ev) {
     if (ev.key === "Enter") {
-      console.log(`%ckey os enter!`, 'font-size: 35px; color: dodgerblue;');
       doneEditing();
     }
   }
