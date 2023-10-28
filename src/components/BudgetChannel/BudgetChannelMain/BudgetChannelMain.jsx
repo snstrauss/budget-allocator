@@ -3,10 +3,12 @@ import S from "./BudgetChannelMain.module.scss";
 import { BudgetChannelConfig } from "./BudgetChannelConfig/BudgetChannelConfig";
 import { BudgetChannelBreakdown } from "./BudgetChannelBreakdown/BudgetChannelBreakdown";
 
-export function BudgetChannelMain({ channelData, isOpen }) {
+export function BudgetChannelMain({ channelId, isOpen }) {
+
+
   return (
     <main className={clsx(S.budgetChannelMain, isOpen && S.open)}>
-      <BudgetChannelConfig />
+      <BudgetChannelConfig channelId={channelId} />
       <BudgetChannelBreakdown />
     </main>
   );

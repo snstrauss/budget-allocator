@@ -1,3 +1,4 @@
+import { useContext, useMemo } from "react";
 import { createActionsContext } from "./createActionsContext";
 
 export const BUDGET_FREQUANCY = {
@@ -44,3 +45,12 @@ const { Provider, Context } = createActionsContext(
 
 export const BudgetChannelsContext = Context;
 export const BudgetChannelsProvider = Provider;
+
+export function useBudgetChannel(id) {
+  const { state: allChannels } = useContext(BudgetChannelsContext);
+
+  return useMemo(
+    () => allChannels.find((channel) => channel.id === id),
+    [allChannels, id]
+  );
+}

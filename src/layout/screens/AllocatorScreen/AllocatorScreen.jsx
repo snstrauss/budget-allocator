@@ -9,15 +9,13 @@ export function AllocatorScreen() {
 
   return (
     <div className={S.allocatorScreen}>
-      {budgetChannels.map((channelData) => {
-        const { id } = channelData;
-
+      {budgetChannels.map(({ id }) => {
         const isOpen = openChannelId === id;
 
         return (
           <BudgetChannel
             key={id}
-            channelData={channelData}
+            channelId={id}
             isOpen={isOpen}
             onSelectChannel={() => setOpenChannelId(isOpen ? null : id)}
           />

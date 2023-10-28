@@ -4,12 +4,15 @@ import OpenIndicatorSvg from "../../../assets/img/open-close-indicator.svg?react
 import ChannelIconSvg from "../../../assets/img/channel-icon.svg?react";
 import { BudgetChannelMenu } from "../BudgetChannelMenu/BudgetChannelMenu";
 import clsx from "clsx";
-import { BudgetChannelsContext } from "../../../contexts/budgetChannelsContext";
+import { BudgetChannelsContext, useBudgetChannel } from "../../../contexts/budgetChannelsContext";
 import { useClickAway, useKey, useToggle } from "react-use";
 
-export function BudgetChannelHeader({ channelData, onSelectChannel, isOpen }) {
+export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
+
+  const channelData = useBudgetChannel(channelId);
+
   const { isInEditMode, startEditMode, inputRef, removeChannel } =
-    useChannelMenuOptions(channelData);
+    useChannelMenuOptions(channelId);
 
   const { name } = channelData;
 
@@ -35,7 +38,7 @@ export function BudgetChannelHeader({ channelData, onSelectChannel, isOpen }) {
   );
 }
 
-function useChannelMenuOptions({ id }) {
+function useChannelMenuOptions(id) {
   const {
     actions: { renameChannel, removeChannel },
   } = useContext(BudgetChannelsContext);
