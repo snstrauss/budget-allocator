@@ -1,0 +1,31 @@
+@import "../../../styles/mixins.scss";
+
+.budgetChannelMenu {
+  --border-radius: 4px;
+  padding: 10px 8px;
+  position: relative;
+
+  .menu {
+    @include flex($align: flex-start, $gap: 6px);
+
+    span {
+      border-radius: var(--border-radius);
+      padding: 10px 8px;
+      width: 100%;
+
+      --hover-color-angle: 214deg;
+      transition: 0.4s ease-in;
+      transition-property: background-color, color;
+      &:hover {
+        background-color: hsl(var(--hover-color-angle) 71.19% 52.35%);
+        color: white;
+      }
+    }
+
+    .removeButton {
+      background-color: #fde8ea;
+      color: #ee2032;
+      --hover-color-angle: 354deg;
+    }
+  }
+}

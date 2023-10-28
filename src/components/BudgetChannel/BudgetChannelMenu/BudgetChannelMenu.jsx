@@ -1,9 +1,10 @@
 import S from "./BudgetChannelMenu.module.scss";
 import clsx from "clsx";
-import DotsMenuSvg from "../../assets/img/dots-menu.svg?react";
-import { Typography } from "../Typography/Typography";
+import DotsMenuSvg from "../../../assets/img/dots-menu.svg?react";
+import { Typography } from "../../Typography/Typography";
 import { useClickAway, useToggle } from "react-use";
 import { useRef } from "react";
+import { AppearingCard } from "../../AppearingCard/AppearingCard";
 
 const menuTextBase = "allocator.menu.actions";
 
@@ -14,7 +15,7 @@ export function BudgetChannelMenu({ className, startEdit, removeChannel }) {
     <div className={clsx(S.budgetChannelMenu, className)} onClick={toggleMenu}>
       <DotsMenuSvg />
       {menuIsOpen && (
-        <div className={S.menu} ref={menuRef}>
+        <AppearingCard className={S.menu} ref={menuRef} right="100%">
           <Typography
             textPath={`${menuTextBase}.edit`}
             size={14}
@@ -28,7 +29,7 @@ export function BudgetChannelMenu({ className, startEdit, removeChannel }) {
             className={S.removeButton}
             onClick={removeChannel}
           />
-        </div>
+        </AppearingCard>
       )}
     </div>
   );
