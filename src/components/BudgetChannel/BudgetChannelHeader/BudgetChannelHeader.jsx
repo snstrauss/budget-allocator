@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import S from "./BudgetChannelHeader.module.scss";
 import OpenIndicatorSvg from "../../../assets/img/open-close-indicator.svg?react";
 import ChannelIconSvg from "../../../assets/img/channel-icon.svg?react";
@@ -22,24 +22,18 @@ export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
     inputRef.current.focus();
   }
 
-  function doneNameEdit(newName) {
+  const { name } = channelData;
+
+  function doneNameEdit() {
     renameChannel({
       id: channelId,
-      name: newName,
+      name: inputRef.current.value,
     });
-  }
-
-  function checkIfDoneTyping(typedChar, fullName) {
-    if (typedChar === "Enter") {
-      doneNameEdit(fullName);
-    }
   }
 
   function removeThisChannel() {
     removeChannel({ id: channelId });
   }
-
-  const { name } = channelData;
 
   return (
     <header
@@ -48,13 +42,15 @@ export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
     >
       <OpenIndicatorSvg className={S.indicator} />
       <ChannelIconSvg />
+
       <TextInput
         ref={inputRef}
-        className={S.name}
         initialValue={name}
+        className={S.name}
         onDone={doneNameEdit}
-        onType={checkIfDoneTyping}
+        preventClicks
       />
+
       <BudgetChannelMenu
         className={S.menu}
         startEdit={startNameEdit}

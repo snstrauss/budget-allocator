@@ -1,34 +1,43 @@
-import clsx from "clsx";
-import S from "./TextInput.module.scss";
 import { forwardRef, useState } from "react";
 
-export const TextInput = forwardRef(function TextInput({ className, initialValue, onDone, onType }, ref) {
-  const [isInEditMode, setIsInEditMode] = useState(false);
+export const TextInput = forwardRef(function TextInput(
+  { initialValue, onDone, preventClicks, className },
+  ref
+) {
+  const [textValue, setTextValue] = useState(initialValue);
 
-  function enterFocus(ev) {
-    setIsInEditMode(true);
-    ev.stopPropagation();
+  function doneEditing() {
+    console.log(`%cdone editing`, 'font-size: 35px; color: dodgerblue;');
+    onDone();
+    ref.current.blur();
   }
 
-  function leaveFocus(ev) {
-    setIsInEditMode(false);
-    onDone(ev.target.value);
+  function changeValue(ev) {
+    setTextValue(ev.target.value);
   }
 
-  function charTyped(ev) {
-    onType(ev.key, ref.current.value);
+  function checkForEnter(ev) {
+    if (ev.key === "Enter") {
+      console.log(`%ckey os enter!`, 'font-size: 35px; color: dodgerblue;');
+      doneEditing();
+    }
+  }
+
+  function onInputClick(ev) {
+    if (preventClicks) {
+      ev.preventDefault();
+    }
   }
 
   return (
     <input
       ref={ref}
-      className={clsx(S.textInput, className)}
-      readOnly={!isInEditMode}
-      defaultValue={initialValue}
-      onKeyUpCapture={charTyped}
-      onClick={enterFocus}
-      onFocus={enterFocus}
-      onBlur={leaveFocus}
+      className={className}
+      value={textValue}
+      onMouseDown={onInputClick}
+      onBlur={doneEditing}
+      onChange={changeValue}
+      onKeyUp={checkForEnter}
     />
   );
 });
