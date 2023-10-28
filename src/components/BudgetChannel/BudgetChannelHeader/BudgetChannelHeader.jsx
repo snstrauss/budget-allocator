@@ -4,15 +4,40 @@ import OpenIndicatorSvg from "../../../assets/img/open-close-indicator.svg?react
 import ChannelIconSvg from "../../../assets/img/channel-icon.svg?react";
 import { BudgetChannelMenu } from "../BudgetChannelMenu/BudgetChannelMenu";
 import clsx from "clsx";
-import { BudgetChannelsContext, useBudgetChannel } from "../../../contexts/budgetChannelsContext";
-import { useClickAway, useKey, useToggle } from "react-use";
+import {
+  BudgetChannelsContext,
+  useBudgetChannel,
+} from "../../../contexts/budgetChannelsContext";
+import { TextInput } from "../../TextInput/TextInput";
 
 export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
-
   const channelData = useBudgetChannel(channelId);
 
-  const { isInEditMode, startEditMode, inputRef, removeChannel } =
-    useChannelMenuOptions(channelId);
+  const {
+    actions: { renameChannel, removeChannel },
+  } = useContext(BudgetChannelsContext);
+
+  const inputRef = useRef();
+  function startNameEdit() {
+    inputRef.current.focus();
+  }
+
+  function doneNameEdit(newName) {
+    renameChannel({
+      id: channelId,
+      name: newName,
+    });
+  }
+
+  function checkIfDoneTyping(typedChar, fullName) {
+    if (typedChar === "Enter") {
+      doneNameEdit(fullName);
+    }
+  }
+
+  function removeThisChannel() {
+    removeChannel({ id: channelId });
+  }
 
   const { name } = channelData;
 
@@ -23,70 +48,18 @@ export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
     >
       <OpenIndicatorSvg className={S.indicator} />
       <ChannelIconSvg />
-      <input
-        className={clsx(S.name, isInEditMode && S.edit)}
-        readOnly={!isInEditMode}
-        defaultValue={name}
+      <TextInput
         ref={inputRef}
+        className={S.name}
+        initialValue={name}
+        onDone={doneNameEdit}
+        onType={checkIfDoneTyping}
       />
       <BudgetChannelMenu
         className={S.menu}
-        startEdit={startEditMode}
-        removeChannel={removeChannel}
+        startEdit={startNameEdit}
+        removeChannel={removeThisChannel}
       />
     </header>
   );
-}
-
-function useChannelMenuOptions(id) {
-  const {
-    actions: { renameChannel, removeChannel },
-  } = useContext(BudgetChannelsContext);
-
-  const [isInEditMode, toggleEditMode] = useToggle(false);
-
-  const inputRef = useRef();
-  useClickAway(inputRef, endEditMode);
-
-  useKey(
-    "Enter",
-    () => {
-      if (isInEditMode) {
-        endEditMode();
-      }
-    },
-    {
-      event: "keyup",
-    },
-    [isInEditMode]
-  );
-
-  function startEditMode() {
-    toggleEditMode();
-    inputRef.current.focus();
-  }
-
-  function endEditMode() {
-    if (isInEditMode) {
-      renameChannel({
-        id,
-        name: inputRef.current.value,
-      });
-
-      toggleEditMode();
-    }
-  }
-
-  function removeSelectedChannel() {
-    removeChannel({
-      id,
-    });
-  }
-
-  return {
-    isInEditMode,
-    startEditMode,
-    inputRef,
-    removeChannel: removeSelectedChannel,
-  };
 }

@@ -27,7 +27,7 @@
     font-size: 14px;
     font-weight: 500;
 
-    &.edit {
+    &:focus {
       background-color: white;
       border: 1px solid #313131;
       border-radius: 4px;
