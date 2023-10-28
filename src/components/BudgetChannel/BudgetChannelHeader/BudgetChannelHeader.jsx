@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import S from "./BudgetChannelHeader.module.scss";
 import OpenIndicatorSvg from "../../../assets/img/open-close-indicator.svg?react";
 import ChannelIconSvg from "../../../assets/img/channel-icon.svg?react";

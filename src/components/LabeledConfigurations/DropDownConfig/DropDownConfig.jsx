@@ -11,7 +11,7 @@ export function DropDownConfig({ textBase, options, onChange, initialValue }) {
   }
 
   return (
-    <LabeledConfig className={S.dropDownConfig} textBase={textBase}>
+    <LabeledConfig className={S.dropDownConfig} textBase={textBase} withInfo>
       <div className={S.selectWrapper}>
         <select onChange={onSelection}>
           {options.map((option) => (

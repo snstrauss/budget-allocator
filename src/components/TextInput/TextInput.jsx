@@ -1,7 +1,9 @@
+import S from "./TextInput.module.scss";
+import clsx from "clsx";
 import { forwardRef, useState } from "react";
 
 export const TextInput = forwardRef(function TextInput(
-  { initialValue, onDone, preventClicks, className, formatter },
+  { initialValue, onDone, preventClicks, className, formatter, icon },
   ref
 ) {
   const [textValue, setTextValue] = useState(initialValue);
@@ -30,14 +32,17 @@ export const TextInput = forwardRef(function TextInput(
   }
 
   return (
-    <input
-      ref={ref}
-      className={className}
-      value={textValue}
-      onMouseDown={onInputClick}
-      onBlur={doneEditing}
-      onChange={changeValue}
-      onKeyUp={checkForEnter}
-    />
+    <span className={clsx(S.textInput, className, !!icon && S.withIcon)}>
+      {icon && <div className={S.icon}>{icon}</div>}
+      <input
+        ref={ref}
+        className={clsx(S.input)}
+        value={textValue}
+        onMouseDown={onInputClick}
+        onBlur={doneEditing}
+        onChange={changeValue}
+        onKeyUp={checkForEnter}
+      />
+    </span>
   );
 });

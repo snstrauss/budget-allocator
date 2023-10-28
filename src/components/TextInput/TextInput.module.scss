@@ -1,0 +1,28 @@
+@import "../../styles/mixins.scss";
+
+.textInput {
+  @include flex($direction: row);
+
+  border: 1px solid #B2BBD580;
+  border-radius: 4px;
+  padding: 10px 16px;
+
+  .input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+
+  .icon {
+    width: 30px;
+    aspect-ratio: 1;
+
+    display: grid;
+    place-items: center;
+  }
+
+  &.withIcon {
+    padding-inline-start: 8px;
+  }
+}

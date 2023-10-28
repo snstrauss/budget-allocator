@@ -6,6 +6,7 @@ import clsx from "clsx";
 export function Typography({
   textPath = "",
   replace = {},
+  override,
   size = 14,
   weight = 400,
   className,
@@ -24,7 +25,7 @@ export function Typography({
       style={textStyleParameters}
       onClick={onClick}
     >
-      {text}
+      {override || text}
     </span>
   );
 }

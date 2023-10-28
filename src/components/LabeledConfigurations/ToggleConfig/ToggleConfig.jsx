@@ -23,6 +23,7 @@ export function ToggleConfig({
     <LabeledConfig
       textBase={textBase}
       className={clsx(`${S.toggleConfig}`, className)}
+      withInfo
     >
       <div className={S.options}>
         {options.map((option, idx) => (

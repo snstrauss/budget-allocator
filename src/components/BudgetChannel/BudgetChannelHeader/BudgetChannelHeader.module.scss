@@ -22,16 +22,13 @@
   .name {
     background-color: transparent;
     border: none;
-    outline: none;
 
     font-size: 14px;
     font-weight: 500;
 
-    &:focus {
+    &:has(:focus) {
       background-color: white;
-      border: 1px solid #313131;
-      border-radius: 4px;
-      padding: 5px;
+      outline: 1px solid #b2bbd580;
     }
   }
 
