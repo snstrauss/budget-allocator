@@ -1,0 +1,14 @@
+@import '../../styles/mixins.scss';
+
+.monthName {
+  background-color: white;
+  color: #97A4C8;
+  padding-block: 15px;
+  @include center-single-element;
+
+  &:first-child {
+    // place-items: unset;
+    // align-self: center;
+    // height: 100%;
+  }
+}

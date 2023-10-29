@@ -1,0 +1,23 @@
+@import "../../styles/mixins.scss";
+
+.summaryRowHeader {
+  padding-block: var(--pad);
+  @include flex($direction: row, $justify: flex-start, $gap: 16px);
+  
+  --pad: 22px;
+  @include on-portrait {
+
+    --pad: 12px;
+
+    span {
+      font-size: 0.8em;
+      font-weight: 900;
+      text-align: center;
+      padding-inline: 10px;
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+}

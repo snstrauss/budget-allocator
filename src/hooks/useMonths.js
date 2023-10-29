@@ -15,6 +15,6 @@ export function getMonthNameFromIndex(idx) {
   });
 }
 
-export function makeMonthsArray(fillCallback) {
+export function makeMonthsArray(fillCallback = () => {}) {
   return Array.from({ length: 12 }, fillCallback);
 }

@@ -1,39 +1,18 @@
 @import "../../../styles/mixins.scss";
 
-:global(.summaryLineLayout) {
-  display: grid;
-  grid-template-columns: 3fr repeat(12, 1fr);
-  gap: 32px;
-  padding-inline: 40px;
-
-  & > * {
-    &:first-child {
-      align-self: center;
-    }
-
-    &:not(:first-child) {
-      @include center-single-element;
-    }
-
-    &:is(span):nth-child(2) {
-      border-inline-start: 1px solid #b2bbd5;
-      border-radius: 0;
-    }
-  }
-}
-
 .summaryScreen {
-  .header {
-    height: 48px;
-    text-transform: uppercase;
-    @extend :global(.summaryLineLayout);
+  margin-inline: var(--margin);
+  max-height: var(--max-grid-height);
 
-    span {
-      color: #99a4c2;
-    }
-  }
+  @include scrollable-grid($columns: 13, $min-width: var(--min-col-width));
 
-  .channels {
-    @include scroll($max-height: 36rem);
+  --max-grid-height: 38rem;
+  --min-col-width: 10rem;
+  --margin: 40px;
+
+  @include on-portrait {
+    --margin: 0;
+    --min-col-width: 45px;
+    --max-grid-height: 20rem;
   }
 }

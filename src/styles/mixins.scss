@@ -80,6 +80,43 @@
   }
 }
 
+@mixin scrollable-grid($columns: 10, $min-width: 1fr) {
+  display: grid;
+  grid-template-columns: calc(3 * $min-width) repeat($columns - 1, $min-width);
+  overflow-x: scroll;
+
+  & > * {
+    // top row
+    &:nth-child(-n + #{$columns}) {
+      position: sticky;
+      top: 0;
+    }
+
+    // first column
+    &:nth-child(#{$columns}n + 1) {
+      background-color: white;
+      position: sticky;
+      left: 0;
+      border-inline-end: 1px solid #b2bbd5;
+      border-top-right-radius: 0;
+      width: 100%;
+    }
+
+    // top left cell
+    &:first-child {
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      place-items: center start;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 :root {
   --enabled-input-color: #2a3558;
   --disabled-input-color: #99a4c2;
