@@ -1,4 +1,4 @@
-@import '../../layout/screens/SummaryScreen/SummaryScreen.module.scss';
+@import "../../layout/screens/SummaryScreen/SummaryScreen.module.scss";
 
 .channelSummary {
   height: 64px;
@@ -6,6 +6,18 @@
 
   .channelDetails {
     @include flex($direction: row, $justify: flex-start, $gap: 16px);
+
+    @include on-portrait {
+      span {
+        font-size: 0.8em;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .icon {
+        display: none;
+      }
+    }
   }
 
   .monthValue {
@@ -14,6 +26,10 @@
     input {
       text-align: center;
       @include font-params;
+    }
+
+    @include on-portrait {
+      padding: 0;
     }
   }
 }

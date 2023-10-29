@@ -11,7 +11,7 @@ export function ChannelSummary({ channelId }) {
   return (
     <div className={S.channelSummary}>
       <div className={S.channelDetails}>
-        <ColoredChannelIcon color={iconColor} />
+        <ColoredChannelIcon className={S.icon} color={iconColor} />
         <Typography override={name} size={14} weight={500} />
       </div>
       {months.map((monthValue, idx) => (

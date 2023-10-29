@@ -30,13 +30,20 @@
   place-items: center;
 }
 
-@mixin scroll($max-height: 30rem, $show-scrollbar: false) {
-  overflow: scroll;
+@mixin scroll($max-height: 30rem, $show-scrollbar: false, $on-portrait: false) {
+  overflow-y: scroll;
+  overflow-x: hidden;
   max-height: $max-height;
 
   @if not $show-scrollbar {
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+
+  @if $on-portrait {
+    @include on-portrait {
+      max-height: $on-portrait;
     }
   }
 }
