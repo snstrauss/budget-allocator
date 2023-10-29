@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { forwardRef, useState } from "react";
 
 export const TextInput = forwardRef(function TextInput(
-  { initialValue, onDone, preventClicks, className, formatter, icon },
+  { initialValue, onDone, preventClicks, className, formatter, icon, readOnly },
   ref
 ) {
   const [textValue, setTextValue] = useState(initialValue);
@@ -42,6 +42,7 @@ export const TextInput = forwardRef(function TextInput(
         onBlur={doneEditing}
         onChange={changeValue}
         onKeyUp={checkForEnter}
+        readOnly={readOnly}
       />
     </span>
   );

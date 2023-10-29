@@ -1,33 +1,32 @@
 import { useContext } from "react";
 import S from "./SummaryScreen.module.scss";
-import {
-  BudgetChannelsContext,
-  useBudgetChannel,
-} from "../../../contexts/budgetChannelsContext";
+import { BudgetChannelsContext } from "../../../contexts/budgetChannelsContext";
+import { ChannelSummary } from "../../../components/ChannelSummary/ChannelSummary";
+import { Typography } from "../../../components/Typography/Typography";
+import { MONTH_NAMES } from "../../../hooks/useMonths";
 
 export function SummaryScreen() {
   const { state: channels } = useContext(BudgetChannelsContext);
 
   return (
     <div className={S.summaryScreen}>
-      {channels.map(({ id }) => (
-        <ChannelSummary key={id} channelId={id} />
-      ))}
+      {channels.length > 0 && <SummaryTableHeader />}
+      <div className={S.channels}>
+        {channels.map(({ id }) => (
+          <ChannelSummary key={id} channelId={id} />
+        ))}
+      </div>
     </div>
   );
 }
 
-function ChannelSummary({ channelId }) {
-  const { name, months } = useBudgetChannel(channelId);
-
+function SummaryTableHeader() {
   return (
-    <div style={{ border: "2px solid red" }}>
-      <div>{name}</div>
-      {
-        months.map(val => (<span style={{margin: 5}}>
-          {val}
-        </span>))
-      }
+    <div className={S.header}>
+      <Typography textPath="summary.channels_label" size={11} weight={900} />
+      {MONTH_NAMES.map((monthName) => (
+        <Typography override={monthName} size={11} weight={900} />
+      ))}
     </div>
   );
 }

@@ -1,0 +1,19 @@
+@import '../../layout/screens/SummaryScreen/SummaryScreen.module.scss';
+
+.channelSummary {
+  height: 64px;
+  @extend :global(.summaryLineLayout);
+
+  .channelDetails {
+    @include flex($direction: row, $justify: flex-start, $gap: 16px);
+  }
+
+  .monthValue {
+    border: none;
+
+    input {
+      text-align: center;
+      @include font-params;
+    }
+  }
+}
