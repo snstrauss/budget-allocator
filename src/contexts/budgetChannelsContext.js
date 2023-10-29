@@ -51,6 +51,10 @@ const campaignActions = {
     changeSingleChannel(allChannels, id, {
       baseline,
     }),
+  setChannelMonths: (allChannels, { id, months }) =>
+    changeSingleChannel(allChannels, id, {
+      months,
+    }),
   setMonthValue: (allChannels, { channelId, monthIndex, newValue }) => {
     const relevantChannel = getSingleChannel(allChannels, channelId);
     relevantChannel.months[monthIndex] = newValue;

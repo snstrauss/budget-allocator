@@ -5,7 +5,10 @@ import {
   BudgetChannelsContext,
   useBudgetChannel,
 } from "../../../../contexts/budgetChannelsContext";
-import { NumberFieldConfig } from "../../../LabeledConfigurations/NumberFieldConfig/NumberFieldConfig";
+import {
+  NumberFieldConfig,
+  numberFormat,
+} from "../../../LabeledConfigurations/NumberFieldConfig/NumberFieldConfig";
 import S from "./BudgetChannelConfig.module.scss";
 import { ToggleConfig } from "../../../LabeledConfigurations/ToggleConfig/ToggleConfig";
 import { useContext } from "react";
@@ -32,7 +35,7 @@ export function BudgetChannelConfig({ channelId }) {
     setChannelBaseline({
       id: channelId,
       baseline
-    })
+    });
   }
 
   function updateAllocationStrategy(allocation) {
@@ -59,6 +62,9 @@ export function BudgetChannelConfig({ channelId }) {
         className={clsx(S.baseline, allocation)}
         textBase={`${configTextBase}.baseline`}
         initialValue={baseline}
+        valueOverride={
+          allocation === BUDGET_ALLOCATION.MANUAL && numberFormat(baseline)
+        }
         labelReplace={{
           frequency: `[${capitalize(
             BUDGET_FREQUANCY[frequency.toUpperCase()]

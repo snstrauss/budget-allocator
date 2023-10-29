@@ -10,10 +10,11 @@ export function NumberFieldConfig({
   labelReplace,
   onChange,
   initialValue,
+  valueOverride,
   withInfo = true,
   icon,
   className,
-  readOnly
+  readOnly,
 }) {
   const inputRef = useRef();
 
@@ -33,6 +34,7 @@ export function NumberFieldConfig({
         ref={inputRef}
         className={S.input}
         initialValue={initialValue}
+        valueOverride={valueOverride}
         formatter={numberFormat}
         onDone={doneEditing}
         icon={icon}
@@ -42,11 +44,7 @@ export function NumberFieldConfig({
   );
 }
 
-function numberFormat(value) {
-  return valueIsNumber(value) ? formatWithCommas(value) : value.slice(0, -1);
-}
-
+export const numberFormat = (value) => valueIsNumber(value) ? formatWithCommas(value) : value.slice(0, -1);
 const valueIsNumber = (value) => /^[\d,]+$/.test(value);
-const formatWithCommas = (numberStr) =>
-  Intl.NumberFormat().format(parseInt(removeCommas(numberStr)));
-const removeCommas = (str) => str.replace(/,/g, "");
+const formatWithCommas = (numberStr) => Intl.NumberFormat().format(parseInt(removeCommas(numberStr)));;
+const removeCommas = (str) => str.toString().replace(/,/g, "");;

@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import S from "./SummaryScreen.module.scss";
 import { BudgetChannelsContext } from "../../../contexts/budgetChannelsContext";
 import { ChannelSummary } from "../../../components/ChannelSummary/ChannelSummary";
 import { Typography } from "../../../components/Typography/Typography";
-import { MONTH_NAMES } from "../../../hooks/useMonths";
+import {
+  getMonthNameFromIndex,
+  makeMonthsArray,
+} from "../../../hooks/useMonths";
 
 export function SummaryScreen() {
   const { state: channels } = useContext(BudgetChannelsContext);
@@ -21,10 +24,15 @@ export function SummaryScreen() {
 }
 
 function SummaryTableHeader() {
+  const monthNames = useMemo(
+    () => makeMonthsArray((_, idx) => getMonthNameFromIndex(idx)),
+    []
+  );
+
   return (
     <div className={S.header}>
       <Typography textPath="summary.channels_label" size={11} weight={900} />
-      {MONTH_NAMES.map((monthName) => (
+      {monthNames.map((monthName) => (
         <Typography override={monthName} size={11} weight={900} />
       ))}
     </div>

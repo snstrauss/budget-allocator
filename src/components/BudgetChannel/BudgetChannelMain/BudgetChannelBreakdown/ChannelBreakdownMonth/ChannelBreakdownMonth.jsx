@@ -9,12 +9,15 @@ export function ChannelBreakdownMonth({ value, idx, onChange, className, readOnl
     onChange(newValue, idx);
   }
 
+  console.log(`%cvalue - ${value}`, 'font-size: 35px; color: dodgerblue;');
+
   return (
     <NumberFieldConfig
       className={className}
       onChange={changeMonthValue}
       textOverride={monthName}
       initialValue={value}
+      valueOverride={readOnly && value}
       withInfo={false}
       icon={<DollarSignSvg />}
       readOnly={readOnly}
