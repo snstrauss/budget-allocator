@@ -21,8 +21,14 @@ function createNewChannel() {
     allocation: BUDGET_ALLOCATION.EQUAL,
     frequency: BUDGET_FREQUANCY.ANNUALLY,
     months: Array(12).fill(0),
+    iconColor: getRandomColor(),
   };
 }
+
+const getRandomColor = () =>
+  `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padEnd(6, "0")}`;
 
 const campaignActions = {
   addChannel: (state) => {

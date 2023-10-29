@@ -1,7 +1,6 @@
 import { useContext, useRef } from "react";
 import S from "./BudgetChannelHeader.module.scss";
 import OpenIndicatorSvg from "../../../assets/img/open-close-indicator.svg?react";
-import ChannelIconSvg from "../../../assets/img/channel-icon.svg?react";
 import { BudgetChannelMenu } from "../BudgetChannelMenu/BudgetChannelMenu";
 import clsx from "clsx";
 import {
@@ -9,6 +8,7 @@ import {
   useBudgetChannel,
 } from "../../../contexts/budgetChannelsContext";
 import { TextInput } from "../../TextInput/TextInput";
+import { ColoredChannelIcon } from "../../ColoredChannelIcon/ColoredChannelIcon";
 
 export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
   const channelData = useBudgetChannel(channelId);
@@ -22,7 +22,7 @@ export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
     inputRef.current.focus();
   }
 
-  const { name } = channelData;
+  const { name, iconColor } = channelData;
 
   function doneNameEdit() {
     renameChannel({
@@ -41,7 +41,7 @@ export function BudgetChannelHeader({ channelId, onSelectChannel, isOpen }) {
       onClick={onSelectChannel}
     >
       <OpenIndicatorSvg className={S.indicator} />
-      <ChannelIconSvg />
+      <ColoredChannelIcon color={iconColor} />
 
       <TextInput
         ref={inputRef}
