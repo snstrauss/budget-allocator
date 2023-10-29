@@ -2,7 +2,7 @@ import DollarSignSvg from "../../../../../assets/img/dollar-sign.svg?react";
 import { NumberFieldConfig } from "../../../../LabeledConfigurations/NumberFieldConfig/NumberFieldConfig";
 import { useMonthName } from "../../../../../hooks/useMonths";
 
-export function ChannelBreakdownMonth({ value, idx, onChange }) {
+export function ChannelBreakdownMonth({ value, idx, onChange, className }) {
   const monthName = useMonthName(idx);
 
   function changeMonthValue(newValue) {
@@ -11,6 +11,7 @@ export function ChannelBreakdownMonth({ value, idx, onChange }) {
 
   return (
     <NumberFieldConfig
+      className={className}
       onChange={changeMonthValue}
       textOverride={monthName}
       initialValue={value}

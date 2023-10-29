@@ -10,12 +10,13 @@ import S from "./BudgetChannelConfig.module.scss";
 import { ToggleConfig } from "../../../LabeledConfigurations/ToggleConfig/ToggleConfig";
 import { useContext } from "react";
 import { DropDownConfig } from "../../../LabeledConfigurations/DropDownConfig/DropDownConfig";
+import clsx from "clsx";
 
 const configTextBase = `allocator.config`;
 
 export function BudgetChannelConfig({ channelId }) {
   const {
-    actions: { setChannelAllocation, setChannelFrequency },
+    actions: { setChannelAllocation, setChannelFrequency, setChannelBaseline },
   } = useContext(BudgetChannelsContext);
 
   const { frequency, allocation, baseline } = useBudgetChannel(channelId);
@@ -28,10 +29,10 @@ export function BudgetChannelConfig({ channelId }) {
   }
 
   function updateBaseline(baseline) {
-    console.log(
-      `%cbaseline - ${baseline}`,
-      "font-size: 35px; color: dodgerblue;"
-    );
+    setChannelBaseline({
+      id: channelId,
+      baseline
+    })
   }
 
   function updateAllocationStrategy(allocation) {
@@ -55,6 +56,7 @@ export function BudgetChannelConfig({ channelId }) {
 
       <NumberFieldConfig
         onChange={updateBaseline}
+        className={clsx(S.baseline, allocation)}
         textBase={`${configTextBase}.baseline`}
         initialValue={baseline}
         labelReplace={{

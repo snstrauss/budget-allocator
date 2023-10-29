@@ -1,5 +1,9 @@
-@import '../../../../styles/mixins.scss';
+@import "../../../../styles/mixins.scss";
 
 .budgetChannelConfig {
   @include flex($direction: row, $justify: flex-start, $gap: 56px);
+
+  .baseline {
+    @include equal-manual-colors;
+  }
 }

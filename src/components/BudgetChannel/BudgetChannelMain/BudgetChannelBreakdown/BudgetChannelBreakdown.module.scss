@@ -19,4 +19,11 @@
     width: 100%;
     @include responsive-grid;
   }
+
+  .month {
+    @include equal-manual-colors(
+      $equal: var(--disabled-input-color),
+      $manual: var(--enabled-input-color)
+    );
+  }
 }

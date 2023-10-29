@@ -12,7 +12,7 @@ export function NumberFieldConfig({
   initialValue,
   withInfo = true,
   icon,
-  fieldClassName
+  className
 }) {
   const inputRef = useRef();
 
@@ -25,12 +25,12 @@ export function NumberFieldConfig({
       textBase={textBase}
       textOverride={textOverride}
       labelReplace={labelReplace}
-      className={S.numberFieldConfig}
+      className={clsx(S.numberFieldConfig, className)}
       withInfo={withInfo}
     >
       <TextInput
         ref={inputRef}
-        className={clsx(S.input, fieldClassName)}
+        className={S.input}
         initialValue={initialValue}
         formatter={numberFormat}
         onDone={doneEditing}

@@ -6,6 +6,7 @@ import {
 import { Typography } from "../../../Typography/Typography";
 import S from "./BudgetChannelBreakdown.module.scss";
 import { ChannelBreakdownMonth } from "./ChannelBreakdownMonth/ChannelBreakdownMonth";
+import clsx from "clsx";
 
 const breakdownTextBase = `allocator.breakdown`;
 
@@ -13,7 +14,7 @@ export function BudgetChannelBreakdown({ channelId }) {
   const {
     actions: { setMonthValue },
   } = useContext(BudgetChannelsContext);
-  const { months } = useBudgetChannel(channelId);
+  const { months, allocation } = useBudgetChannel(channelId);
 
   function updateMonthValue(newValue, monthIndex) {
     setMonthValue({
@@ -41,6 +42,7 @@ export function BudgetChannelBreakdown({ channelId }) {
           return (
             <ChannelBreakdownMonth
               key={idx}
+              className={clsx(S.month, allocation)}
               value={value}
               idx={idx}
               onChange={updateMonthValue}
