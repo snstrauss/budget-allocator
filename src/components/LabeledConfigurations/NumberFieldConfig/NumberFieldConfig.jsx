@@ -45,7 +45,7 @@ export function NumberFieldConfig({
 }
 
 export const numberFormat = (value) => {
-  const noCommasValue = removeCommas(parseFloat(value));
+  const noCommasValue = parseFloat(removeCommas(value));
   return valueIsNumber(noCommasValue)
     ? formatWithCommas(noCommasValue)
     : noCommasValue.slice(0, -1);
