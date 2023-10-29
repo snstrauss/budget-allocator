@@ -8,7 +8,7 @@
 
     --border: 1px solid #B2BBD580;
     border: var(--border);
-    border-radius: 4px;
+    @include rounded;
     background-color: #e0e4f2b9;
     width: 184px;
 

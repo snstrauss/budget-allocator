@@ -10,9 +10,9 @@
 
   background-color: white;
   border: 1px solid rgba(178, 187, 213, 0.5);
-  border-radius: var(--border-radius);
   overflow: hidden;
   z-index: 1;
+  @include rounded;
 
   animation: menu-appear 0.7s ease-in-out forwards;
 

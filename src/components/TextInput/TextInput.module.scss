@@ -4,7 +4,7 @@
   @include flex($direction: row);
 
   border: 1px solid #B2BBD580;
-  border-radius: 4px;
+  @include rounded;
   padding: 10px 16px;
 
   .input {

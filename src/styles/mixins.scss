@@ -45,3 +45,7 @@
   font-size: $size;
   font-weight: $weight;
 }
+
+@mixin rounded($radius: 4px) {
+  border-radius: $radius;
+}

@@ -6,6 +6,6 @@
   --inline-pad: 16px;
   --block-pad: calc(var(--inline-pad) / 2);
 
-  border-radius: 4px;
+  @include rounded;
   border: var(--border);
 }

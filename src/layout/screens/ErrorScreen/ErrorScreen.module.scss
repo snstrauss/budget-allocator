@@ -7,7 +7,7 @@
 
   .reloadButton {
     border: 3px solid #313131;
-    border-radius: 10rem;
     padding-inline: 4rem;
+    @include rounded(10rem);
   }
 }
