@@ -20,6 +20,7 @@ function createNewChannel() {
     name: "New Channel",
     allocation: BUDGET_ALLOCATION.EQUAL,
     frequency: BUDGET_FREQUANCY.ANNUALLY,
+    baseline: 0,
     months: Array(12).fill(0),
     iconColor: getRandomColor(),
   };
@@ -45,6 +46,10 @@ const campaignActions = {
   setChannelAllocation: (allChannels, { id, allocation }) =>
     changeSingleChannel(allChannels, id, {
       allocation,
+    }),
+  setChannelBaseline: (allChannels, { id, baseline }) =>
+    changeSingleChannel(allChannels, id, {
+      baseline,
     }),
   setMonthValue: (allChannels, { channelId, monthIndex, newValue }) => {
     const relevantChannel = getSingleChannel(allChannels, channelId);

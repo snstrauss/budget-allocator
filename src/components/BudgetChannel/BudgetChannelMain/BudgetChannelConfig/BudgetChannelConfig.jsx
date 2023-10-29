@@ -18,8 +18,8 @@ export function BudgetChannelConfig({ channelId }) {
     actions: { setChannelAllocation, setChannelFrequency },
   } = useContext(BudgetChannelsContext);
 
-  const { frequency, allocation } = useBudgetChannel(channelId);
-  
+  const { frequency, allocation, baseline } = useBudgetChannel(channelId);
+
   function updateFrequency(frequency) {
     setChannelFrequency({
       id: channelId,
@@ -56,7 +56,7 @@ export function BudgetChannelConfig({ channelId }) {
       <NumberFieldConfig
         onChange={updateBaseline}
         textBase={`${configTextBase}.baseline`}
-        initialValue={"34"}
+        initialValue={baseline}
         labelReplace={{
           frequency: `[${capitalize(
             BUDGET_FREQUANCY[frequency.toUpperCase()]
