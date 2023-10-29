@@ -12,7 +12,8 @@ export function NumberFieldConfig({
   initialValue,
   withInfo = true,
   icon,
-  className
+  className,
+  readOnly
 }) {
   const inputRef = useRef();
 
@@ -35,6 +36,7 @@ export function NumberFieldConfig({
         formatter={numberFormat}
         onDone={doneEditing}
         icon={icon}
+        readOnly={readOnly}
       />
     </LabeledConfig>
   );

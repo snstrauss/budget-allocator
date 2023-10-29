@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import {
+  BUDGET_ALLOCATION,
   BudgetChannelsContext,
   useBudgetChannel,
 } from "../../../../contexts/budgetChannelsContext";
@@ -46,6 +47,7 @@ export function BudgetChannelBreakdown({ channelId }) {
               value={value}
               idx={idx}
               onChange={updateMonthValue}
+              readOnly={allocation === BUDGET_ALLOCATION.EQUAL}
             />
           );
         })}

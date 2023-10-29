@@ -64,6 +64,7 @@ export function BudgetChannelConfig({ channelId }) {
             BUDGET_FREQUANCY[frequency.toUpperCase()]
           )}]`,
         }}
+        readOnly={allocation === BUDGET_ALLOCATION.MANUAL}
       />
 
       <ToggleConfig
