@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import "../../styles/mixins.scss";
 
 .tabsNavigation {
   margin-top: 50px;
@@ -9,10 +9,14 @@
 
     .tab {
       text-decoration: none;
-      
+
       &.currentTab {
         box-shadow: 0px 3px black;
       }
     }
+  }
+
+  .content {
+    @include scroll($max-height: 40rem);
   }
 }
