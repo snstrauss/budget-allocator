@@ -13,9 +13,9 @@ export function DropDownConfig({ textBase, options, onChange, value }) {
   return (
     <LabeledConfig className={S.dropDownConfig} textBase={textBase} withInfo>
       <div className={S.selectWrapper}>
-        <select onChange={onSelection}>
+        <select onChange={onSelection} defaultValue={value}>
           {options.map((option) => (
-            <option value={option} key={option} selected={option === value}>
+            <option value={option} key={option}>
               {optionStrings[option]}
             </option>
           ))}

@@ -33,7 +33,12 @@ function SummaryTableHeader() {
     <div className={S.header}>
       <Typography textPath="summary.channels_label" size={11} weight={900} />
       {monthNames.map((monthName) => (
-        <Typography override={monthName} size={11} weight={900} />
+        <Typography
+          key={monthName}
+          override={monthName}
+          size={11}
+          weight={900}
+        />
       ))}
     </div>
   );

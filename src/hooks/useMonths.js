@@ -1,11 +1,15 @@
 import { useMemo } from "react";
+import setDate from "date-fns/set";
 
 export function useMonthName(idx) {
   return useMemo(() => getMonthNameFromIndex(idx), [idx]);
 }
 
 export function getMonthNameFromIndex(idx) {
-  return new Date(new Date().setMonth(idx)).toLocaleString("default", {
+  return setDate(new Date(), {
+    date: 1,
+    month: idx,
+  }).toLocaleString("default", {
     month: "short",
     year: "2-digit",
   });
