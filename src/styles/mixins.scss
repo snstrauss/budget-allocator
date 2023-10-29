@@ -6,10 +6,42 @@
   gap: $gap;
 }
 
-@mixin absolute-position($top: unset, $left: unset, $bottom: unset, $right: unset) {
+@mixin absolute-position(
+  $top: unset,
+  $left: unset,
+  $bottom: unset,
+  $right: unset
+) {
   position: absolute;
   top: $top;
   left: $left;
   bottom: $bottom;
   right: $right;
+}
+
+@mixin responsive-grid($gap: 24px, $baseSize: 10rem) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(auto-fit, minmax($baseSize, 1fr));
+}
+
+@mixin center-single-element() {
+  display: grid;
+  place-items: center;
+}
+
+@mixin scroll($max-height: 30rem, $show-scrollbar: false) {
+  overflow: scroll;
+  max-height: $max-height;
+
+  @if not $show-scrollbar {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@mixin font-params($size: 14px, $weight: 500) {
+  font-size: $size;
+  font-weight: $weight;
 }

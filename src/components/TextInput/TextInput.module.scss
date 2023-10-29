@@ -17,9 +17,7 @@
   .icon {
     width: 30px;
     aspect-ratio: 1;
-
-    display: grid;
-    place-items: center;
+    @include center-single-element;
   }
 
   &.withIcon {

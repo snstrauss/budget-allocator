@@ -31,7 +31,9 @@ export function TabsNavigation() {
             />
           ))}
         </div>
-        <Outlet />
+        <main className={S.content}>
+          <Outlet />
+        </main>
       </div>
     </>
   );

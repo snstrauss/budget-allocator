@@ -1,8 +1,9 @@
+@import '../../../styles/mixins.scss';
+
 .errorScreen {
-  display: grid;
-  place-items: center;
-  font-size: 10rem;
   margin-block: 14rem;
+  @include center-single-element;
+  @include font-params($size: 10rem);
 
   .reloadButton {
     border: 3px solid #313131;

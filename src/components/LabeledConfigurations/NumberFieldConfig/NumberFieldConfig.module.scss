@@ -1,9 +1,10 @@
+@import '../../../styles/mixins.scss';
+
 .numberFieldConfig {
   .input {
     border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
     border: 1px solid #B2BBD580;
+    @include font-params;
 
     background-color: white;
   }

@@ -1,3 +1,39 @@
+@import "../../../styles/mixins.scss";
+
+:global(.summaryLineLayout) {
+  display: grid;
+  grid-template-columns: 3fr repeat(12, 1fr);
+  gap: 32px;
+  padding-inline: 40px;
+
+  & > * {
+    &:first-child {
+      align-self: center;
+    }
+
+    &:not(:first-child) {
+      @include center-single-element;
+    }
+
+    &:is(span):nth-child(2) {
+      border-inline-start: 1px solid #b2bbd5;
+      border-radius: 0;
+    }
+  }
+}
+
 .summaryScreen {
-  background-color: springgreen;
+  .header {
+    height: 48px;
+    text-transform: uppercase;
+    @extend :global(.summaryLineLayout);
+
+    span {
+      color: #99a4c2;
+    }
+  }
+
+  .channels {
+    @include scroll($max-height: 36rem);
+  }
 }

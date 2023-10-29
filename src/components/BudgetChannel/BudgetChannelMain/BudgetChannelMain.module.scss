@@ -18,12 +18,6 @@
 
   &.open {
     --main-height: 55vh;
-
     --block-pad: var(--pad);
-    overflow: scroll;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 }

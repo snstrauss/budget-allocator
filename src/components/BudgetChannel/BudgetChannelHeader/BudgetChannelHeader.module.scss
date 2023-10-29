@@ -22,9 +22,7 @@
   .name {
     background-color: transparent;
     border: none;
-
-    font-size: 14px;
-    font-weight: 500;
+    @include font-params;
 
     &:has(:focus) {
       background-color: white;
