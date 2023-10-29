@@ -25,14 +25,17 @@ export function AllocatorScreen() {
   );
 }
 
+const firstChannel = "first-channel";
 function useBudgetChannelsAccordion() {
   const { state: budgetChannels } = useContext(BudgetChannelsContext);
-
-  const [openChannelId, setOpenChannelId] = useState();
+  const [openChannelId, setOpenChannelId] = useState(firstChannel);
 
   useEffect(() => {
     if (budgetChannels.length > 0) {
-      setOpenChannelId(openChannelId || budgetChannels[0].id);
+      const idToSet =
+        openChannelId === firstChannel ? budgetChannels[0].id : openChannelId;
+
+      setOpenChannelId(idToSet);
     }
   }, [budgetChannels, openChannelId]);
 
