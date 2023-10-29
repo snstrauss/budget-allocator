@@ -24,7 +24,10 @@ export const TextInput = forwardRef(function TextInput(
 
   function changeValue(ev) {
     const nextValue = ev.target.value;
-    const nextFormattedValue = formatter ? formatter(nextValue) : nextValue;
+
+    const nextFormattedValue =
+      nextValue.length && formatter ? formatter(nextValue) : nextValue;
+
     setTextValue(nextFormattedValue);
   }
 

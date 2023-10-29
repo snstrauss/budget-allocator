@@ -44,7 +44,15 @@ export function NumberFieldConfig({
   );
 }
 
-export const numberFormat = (value) => valueIsNumber(value) ? formatWithCommas(value) : value.slice(0, -1);
-const valueIsNumber = (value) => /^[\d,]+$/.test(value);
-const formatWithCommas = (numberStr) => Intl.NumberFormat().format(parseInt(removeCommas(numberStr)));;
-const removeCommas = (str) => str.toString().replace(/,/g, "");;
+export const numberFormat = (value) => {
+  const noCommasValue = removeCommas(parseFloat(value));
+  return valueIsNumber(noCommasValue)
+    ? formatWithCommas(noCommasValue)
+    : noCommasValue.slice(0, -1);
+};
+const valueIsNumber = (value) => !Number.isNaN(Number(value));
+const formatWithCommas = (numberStr) =>
+  Intl.NumberFormat("default", { maximumFractionDigits: 2 }).format(
+    parseFloat(numberStr)
+  );
+const removeCommas = (str) => str.toString().replace(/,/g, "");

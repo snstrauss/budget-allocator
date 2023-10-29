@@ -3,6 +3,7 @@ import S from "./ChannelSummary.module.scss";
 import { Typography } from "../Typography/Typography";
 import { TextInput } from "../TextInput/TextInput";
 import { ColoredChannelIcon } from "../ColoredChannelIcon/ColoredChannelIcon";
+import { numberFormat } from '../LabeledConfigurations/NumberFieldConfig/NumberFieldConfig';
 
 export function ChannelSummary({ channelId }) {
   const { name, months, iconColor } = useBudgetChannel(channelId);
@@ -17,7 +18,7 @@ export function ChannelSummary({ channelId }) {
         <TextInput
           key={idx}
           className={S.monthValue}
-          initialValue={`$${monthValue}`}
+          initialValue={`$${numberFormat(monthValue)}`}
           readOnly
         />
       ))}
