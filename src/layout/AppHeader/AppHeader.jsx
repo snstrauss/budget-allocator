@@ -8,8 +8,9 @@ import { BudgetChannelsContext } from "../../contexts/budgetChannelsContext";
 const appHeaderTextBase = "app_header";
 
 export function AppHeader() {
-
-  const { actions: { addChannel } } = useContext(BudgetChannelsContext);
+  const {
+    actions: { addChannel },
+  } = useContext(BudgetChannelsContext);
 
   return (
     <div className={S.header}>
@@ -29,7 +30,7 @@ export function AppHeader() {
           className={S.info}
         />
       </div>
-      <Button onClick={addChannel}>
+      <Button onClick={addChannel} className={S.addButton}>
         <PlusSignSvg />
         <Typography
           textPath={`${appHeaderTextBase}.button`}

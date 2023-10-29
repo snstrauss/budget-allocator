@@ -1,4 +1,4 @@
-@import '../../../styles/mixins.scss';
+@import "../../../styles/mixins.scss";
 
 .budgetChannelMain {
   --main-height: 0;
@@ -15,9 +15,19 @@
   transition-property: max-height, padding;
 
   @include flex($align: flex-start, $justify: flex-start, $gap: 48px);
+  @include scroll($max-height: var(--main-height));
 
   &.open {
     --main-height: 55vh;
     --block-pad: var(--pad);
+  }
+
+  & > * {
+    width: 100%;
+  }
+
+  padding-inline-end: 30%;
+  @include on-portrait {
+    padding-inline-end: var(--pad);
   }
 }

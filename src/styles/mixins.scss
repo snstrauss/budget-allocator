@@ -22,7 +22,7 @@
 @mixin responsive-grid($gap: 24px, $baseSize: 10rem) {
   display: grid;
   gap: $gap;
-  grid-template-columns: repeat(auto-fit, minmax($baseSize, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min($baseSize, 100%), 1fr));
 }
 
 @mixin center-single-element() {
@@ -50,19 +50,26 @@
   border-radius: $radius;
 }
 
-@mixin equal-manual-colors($equal: var(--enabled-input-color), $manual: var(--disabled-input-color)) {
+@mixin equal-manual-colors(
+  $equal: var(--enabled-input-color),
+  $manual: var(--disabled-input-color)
+) {
   &:global(.equal) {
     input {
-      // color:  #2A3558;
       color: $equal;
     }
   }
 
   &:global(.manual) {
     input {
-      // color: #99a4c2;
       color: $manual;
     }
+  }
+}
+
+@mixin on-portrait() {
+  @media (orientation: portrait) {
+    @content;
   }
 }
 

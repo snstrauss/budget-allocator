@@ -17,4 +17,20 @@
       color: #99a4c2;
     }
   }
+
+  .addButton {
+    @include on-portrait {
+      --offset: 20px;
+      @include absolute-position($top: var(--offset), $right: var(--offset));
+      @include rounded(10em);
+      border-width: 3px;
+      border-color: #727272;
+      width: 50px;
+      aspect-ratio: 1;
+
+      span {
+        display: none;
+      }
+    }
+  }
 }

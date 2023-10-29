@@ -1,8 +1,7 @@
 @import "../../../../styles/mixins.scss";
 
 .budgetChannelConfig {
-  @include flex($direction: row, $justify: flex-start, $gap: 56px);
-
+  @include responsive-grid;
   .baseline {
     @include equal-manual-colors;
   }

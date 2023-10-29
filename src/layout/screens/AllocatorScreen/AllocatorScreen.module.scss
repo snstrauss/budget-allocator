@@ -1,5 +1,9 @@
 @import "../../../styles/mixins.scss";
 
 .allocatorScreen {
-  @include flex($gap: 1rem, $align: stretch);
+  @include flex($gap: 1rem, $align: stretch, $justify: flex-start);
+  @include scroll($max-height: 38rem);
+  @include on-portrait {
+    @include scroll($max-height: 18rem);
+  }
 }

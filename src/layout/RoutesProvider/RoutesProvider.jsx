@@ -11,7 +11,6 @@ export const TABS = {
 }
 
 export const tabsConfig = {
-  [TABS.ROOT]: <AllocatorScreen />,
   [TABS.ALLOCATOR]: <AllocatorScreen />,
   [TABS.SUMMARY]: <SummaryScreen />,
 };
