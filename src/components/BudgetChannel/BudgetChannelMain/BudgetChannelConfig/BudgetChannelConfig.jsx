@@ -50,6 +50,7 @@ export function BudgetChannelConfig({ channelId }) {
       <DropDownConfig
         textBase={`${configTextBase}.frequency`}
         onChange={updateFrequency}
+        value={frequency}
         options={[
           BUDGET_FREQUANCY.ANNUALLY,
           BUDGET_FREQUANCY.MONTHLY,
